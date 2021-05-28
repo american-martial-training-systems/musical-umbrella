@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  route: String;
 
-  ngOnInit(): void {
+  constructor(private router: Router) { 
+    this.router.events.subscribe((val) => {
+      this.route = this.router.url;
+    });
   }
+
+  ngOnInit(): void { }
 
 }
